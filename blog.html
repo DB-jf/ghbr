@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CGHBR — Blog & Insights</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---- Palette from homepage ---- */
+    :root{
+      --navy: #0c3a59;
+      --gold: #c99b2a;
+      --gold-soft: #e0b54d;
+      --text: #0a2230;
+      --muted: #f6f7f9;
+      --radius-pill: 50px;
+      --transition: 220ms cubic-bezier(.2,.9,.25,1);
+      --max-width: 1100px;
+      --container-pad: 24px;
+    }
+
+    *{box-sizing: border-box;}
+    body{
+      margin:0;
+      font-family: "Inter",sans-serif;
+      background:#fff;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+    }
+    a{text-decoration:none;color:inherit}
+
+    .wrap{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:0 var(--container-pad);
+    }
+
+    /* NAV (copied exactly from homepage) */
+    header.site-header{
+      position:sticky;
+      top:0;
+      z-index:60;
+      background:rgba(255,255,255,0.98);
+      backdrop-filter:saturate(120%) blur(6px);
+      border-bottom:1px solid rgba(15,34,44,0.04);
+    }
+    .nav-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:72px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .brand img{height:44px}
+    .brand .abbr{font-weight:700;color:var(--gold);font-family:"Merriweather",serif;}
+
+    nav.main-nav{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .nav-links{display:flex;gap:6px}
+    .nav-links a{
+      padding:10px 14px;
+      font-weight:600;
+      color:var(--navy);
+      border-radius:var(--radius-pill);
+      position:relative;
+      transition:var(--transition);
+    }
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      border:2px solid transparent;
+      transition:var(--transition);
+    }
+    .nav-links a:hover::after{
+      border-color:var(--gold);
+      box-shadow:0 6px 20px rgba(12,58,89,0.06);
+    }
+
+    .nav-cta{
+      padding:10px 16px;
+      background:var(--gold-soft);
+      border-radius:12px;
+      font-weight:700;
+      color:var(--navy);
+    }
+
+    .mobile-toggle{
+      display:none;
+      border:0;
+      background:transparent;
+      font-size:24px;
+    }
+
+    /* Page hero */
+    .page-hero{
+      background:linear-gradient(180deg, var(--navy), rgba(12,58,89,0.88));
+      padding:70px 0;
+      color:white;
+      text-align:center;
+    }
+    .page-hero h1{
+      font-family:"Merriweather",serif;
+      font-size:42px;
+      margin:0 0 8px;
+    }
+    .page-hero p{
+      margin:0;
+      font-size:18px;
+      opacity:0.9;
+    }
+
+    /* Blog layout */
+    main{padding:50px 0}
+
+    .blog-layout{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:30px;
+    }
+
+    /* Blog post card */
+    .post{
+      background:white;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 6px 22px rgba(12,58,89,0.06);
+      transition:var(--transition);
+      border:1px solid rgba(12,58,89,0.05);
+      margin-bottom:26px;
+    }
+    .post:hover{
+      transform:translateY(-6px);
+      box-shadow:0 16px 40px rgba(12,58,89,0.10);
+    }
+    .thumb{
+      height:240px;
+      background-size:cover;
+      background-position:center;
+    }
+    .post-content{
+      padding:18px 20px;
+    }
+    .post-content h2{
+      margin:0;
+      font-size:22px;
+      font-family:"Merriweather",serif;
+      color:var(--navy);
+    }
+    .post-content p{
+      margin:10px 0 0;
+      color:#4e6271;
+      font-size:15px;
+    }
+    .meta{
+      margin-top:10px;
+      font-size:13px;
+      opacity:0.7;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      display:flex;
+      flex-direction:column;
+      gap:26px;
+    }
+    .sidebar-box{
+      background:#fff;
+      border-radius:12px;
+      padding:18px;
+      box-shadow:0 6px 22px rgba(12,58,89,0.06);
+      border:1px solid rgba(12,58,89,0.05);
+    }
+    .sidebar-box h3{
+      margin:0 0 12px;
+      font-size:18px;
+      color:var(--navy);
+      font-family:"Merriweather",serif;
+    }
+    .sidebar input[type="search"]{
+      width:100%;
+      padding:12px;
+      border-radius:10px;
+      border:1px solid rgba(12,58,89,0.1);
+    }
+
+    .category-list a{
+      display:block;
+      margin-bottom:8px;
+      color:var(--navy);
+      font-size:15px;
+    }
+
+    .popular-post{
+      display:flex;
+      gap:10px;
+      margin-bottom:12px;
+    }
+    .popular-post img{
+      width:70px;
+      height:70px;
+      border-radius:8px;
+      object-fit:cover;
+    }
+
+    /* Footer (same as homepage) */
+    footer.site-footer{
+      background:var(--navy);
+      color:white;
+      padding:36px 0;
+      margin-top:60px;
+    }
+    .footer-grid{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:18px;
+    }
+    .footer-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .footer-links a{
+      color:rgba(255,255,255,0.92)
+    }
+
+    @media (max-width:860px){
+      .blog-layout{
+        grid-template-columns:1fr;
+      }
+    }
+    @media (max-width:760px){
+      .nav-links{display:none}
+      .mobile-toggle{display:block}
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(14px);
+      transition:opacity 540ms var(--transition), transform 540ms var(--transition);
+    }
+    .reveal.in{
+      opacity:1;
+      transform:none;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAV copied from homepage -->
+<header class="site-header">
+  <div class="wrap nav-row">
+    <div class="brand">
+      <img src="assets/images/logo-ghbr 1.png" alt="GHBR logo">
+      <div class="abbr">GHBR</div>
+    </div>
+
+    <nav class="main-nav">
+      <button class="mobile-toggle" id="mobileToggle">☰</button>
+      <div class="nav-links" id="desktopMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="research.html">Research</a>
+        <a href="services.html">Services</a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <a class="nav-cta" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- BLOG HERO -->
+<section class="page-hero">
+  <h1>Insights & Updates</h1>
+  <p>Thought leadership, ethics discussions, health research briefs, and institutional updates.</p>
+</section>
+
+<!-- MAIN -->
+<main>
+  <div class="wrap blog-layout">
+
+    <!-- LEFT COLUMN: BLOG FEED -->
+    <div>
+
+      <!-- Post 1 -->
+      <article class="post reveal">
+        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1582719478148-9fffeeb7beab?q=80&w=1974');"></div>
+        <div class="post-content">
+          <h2>Navigating Ethical Challenges in Field Research</h2>
+          <p>How CGHBR supports investigators working with vulnerable populations to maintain global ethics standards.</p>
+          <div class="meta">April 19, 2025 • Bioethics • 6 min read</div>
+        </div>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="post reveal">
+        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1551198291-5e15b76e46b9?q=80&w=1974');"></div>
+        <div class="post-content">
+          <h2>Improving Ethical Standards in Maternal Health</h2>
+          <p>A deep dive into our 2024–25 training sessions for ethics committees across Ghana.</p>
+          <div class="meta">March 23, 2025 • Maternal Health • 8 min read</div>
+        </div>
+      </article>
+
+      <!-- Post 3 -->
+      <article class="post reveal">
+        <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1606166325683-f6c3b66543c5?q=80&w=1974');"></div>
+        <div class="post-content">
+          <h2>Strengthening Public Health Policy Through Evidence</h2>
+          <p>How research collaborations shaped maternal care guidelines across three regions.</p>
+          <div class="meta">January 10, 2025 • Public Health • 5 min read</div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- SEARCH -->
+      <div class="sidebar-box reveal">
+        <h3>Search</h3>
+        <input type="search" placeholder="Search blog...">
+      </div>
+
+      <!-- CATEGORIES -->
+      <div class="sidebar-box reveal">
+        <h3>Categories</h3>
+        <div class="category-list">
+          <a href="#">Bioethics</a>
+          <a href="#">Maternal Health</a>
+          <a href="#">Public Health Policy</a>
+          <a href="#">Research Methods</a>
+          <a href="#">Training & Capacity</a>
+        </div>
+      </div>
+
+      <!-- POPULAR POSTS -->
+      <div class="sidebar-box reveal">
+        <h3>Popular Posts</h3>
+
+        <div class="popular-post">
+          <img src="assets/images/male-doctor-vector.jpg">
+          <div>
+            <strong>Ethics in Rural Clinics</strong><br>
+            <small>2,140 views</small>
+          </div>
+        </div>
+
+        <div class="popular-post">
+          <img src="https://images.unsplash.com/photo-1582719478148-9fffeeb7beab?q=80&w=1974">
+          <div>
+            <strong>Maternal Care Framework</strong><br>
+            <small>1,872 views</small>
+          </div>
+        </div>
+
+      </div>
+
+    </aside>
+  </div>
+</main>
+
+<!-- FOOTER (same as homepage) -->
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="assets/images/logo-ghbr 1.png" alt="GHBR" style="height:40px;margin-bottom:8px">
+      <div>
+        <div style="font-weight:700;color:var(--gold)">GHBR</div>
+        <small>Improving Health, Advancing Ethics</small>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="research.html">Research</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal animation
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // mobile toggle
+  document.getElementById("mobileToggle").onclick = function(){
+    const menu = document.getElementById("desktopMenu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  };
+</script>
+
+</body>
+</html>
