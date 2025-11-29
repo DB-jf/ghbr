@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Centre for Global Health & Bioethics Research (GHBR)</title>
+  <meta name="description" content="About GHBR — research, bioethics, consultancy and training in maternal health and more." />
+
+  <!-- Theme colors (change to match your final logo/colors) -->
+  <style>
+    :root{
+      --deep-blue: #0b2545;      /* primary background */
+      --deep-blue-2: #0f3760;    /* accent darker */
+      --logo-accent: #cfa33b;    /* gold-like accent from logo */
+      --muted-blue: #eff6ff;     /* light background for content */
+      --text: #0b1630;
+      --white: #ffffff;
+      --card-shadow: 0 8px 24px rgba(11,37,69,0.12);
+      --radius: 12px;
+      --nav-hover-border: 2px;
+      --nav-hover-radius: 50%;
+      --max-width: 1200px;
+      --transition: 200ms cubic-bezier(.22,.9,.35,1);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--deep-blue) 0%, var(--deep-blue-2) 120%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* Page container */
+    .site{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding: 24px;
+    }
+
+    /* Header / Nav */
+    header{
+      width:100%;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(6px);
+      position:sticky;
+      top:0;
+      z-index:50;
+      border-bottom:1px solid rgba(255,255,255,0.03);
+    }
+    .nav-inner{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 8px;
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .brand img{
+      width:48px;
+      height:48px;
+      object-fit:contain;
+      display:block;
+    }
+    .brand .title{
+      color:var(--white);
+      font-weight:700;
+      letter-spacing:0.6px;
+      font-size:1.05rem;
+    }
+
+    nav ul{
+      display:flex;
+      gap:14px;
+      list-style:none;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    nav a{
+      color:var(--white);
+      font-weight:700;
+      padding:8px 12px;
+      border-radius:999px;
+      transition: transform var(--transition), box-shadow var(--transition), color var(--transition);
+      position:relative;
+      display:inline-block;
+      font-size:0.95rem;
+    }
+    /* Hover effect: border around text, slight scale */
+    nav a::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:var(--nav-hover-radius);
+      border:var(--nav-hover-border) solid transparent;
+      transition: border-color var(--transition), transform var(--transition);
+      pointer-events:none;
+    }
+    nav a:hover, nav a:focus{
+      transform:scale(1.06);
+      outline:none;
+      color:var(--deep-blue-2);
+      background:var(--white); /* subtle bg to contrast */
+    }
+    nav a:hover::after, nav a:focus::after{
+      border-color:var(--logo-accent);
+    }
+
+    /* Mobile menu (simple) */
+    .mobile-toggle{
+      display:none;
+      background:transparent;
+      border:0;
+      color:var(--white);
+      font-size:1.1rem;
+    }
+
+    /* Hero / About header */
+    .hero{
+      display:flex;
+      gap:24px;
+      align-items:center;
+      padding:48px 0;
+      color:var(--white);
+    }
+    .hero .text{
+      flex:1 1 560px;
+      max-width:700px;
+    }
+    .hero h1{
+      margin:0 0 12px 0;
+      font-size:clamp(1.6rem, 3.6vw, 2.6rem);
+      line-height:1.05;
+      letter-spacing: -0.02em;
+      font-weight:800;
+    }
+    .eyebrow{
+      display:inline-block;
+      padding:6px 10px;
+      background:rgba(255,255,255,0.06);
+      border-radius:999px;
+      font-weight:700;
+      margin-bottom:12px;
+      color:var(--white);
+      font-size:0.85rem;
+    }
+    .hero p.lead{
+      margin:0 0 18px 0;
+      color:rgba(255,255,255,0.9);
+      font-size:1rem;
+    }
+    .cta-row{display:flex; gap:12px; align-items:center;}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      border:2px solid transparent;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+    .btn.primary{
+      background:var(--logo-accent);
+      color:var(--deep-blue);
+    }
+    .btn.ghost{
+      background:transparent;
+      color:var(--white);
+      border:2px solid rgba(255,255,255,0.12);
+    }
+    .hero .visual{
+      flex:0 0 420px;
+      min-width:240px;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:var(--card-shadow);
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+
+    /* Content card area */
+    .panel{
+      background:var(--white);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--card-shadow);
+      color:var(--text);
+    }
+    .section{
+      margin:36px 0;
+      width:100%;
+      display:grid;
+      gap:18px;
+    }
+
+    /* Services grid */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .service{
+      padding:18px;
+      border-radius:10px;
+      background:linear-gradient(180deg,#fff,#fbfdff);
+      border:1px solid rgba(11,37,69,0.04);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .service:hover{ transform: translateY(-6px); box-shadow: 0 14px 34px rgba(11,37,69,0.08) }
+    .service h4{ margin:6px 0 6px 0; font-size:1.02rem }
+
+    /* Featured projects list */
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:14px;
+    }
+    .project{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      border-radius:10px;
+      background:linear-gradient(180deg,#fff,#fbfdff);
+      padding:12px;
+      border:1px solid rgba(11,37,69,0.04);
+    }
+
+    /* Blog preview */
+    .blog-list{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+    }
+    .post{
+      border-radius:10px;
+      overflow:hidden;
+      background:var(--muted-blue);
+      padding:12px;
+    }
+
+    /* Contact CTA strip */
+    .cta-strip{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px;
+      border-radius:10px;
+      background: linear-gradient(90deg, rgba(11,37,69,0.06), rgba(12,45,77,0.03));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    /* Footer */
+    footer{
+      width:100%;
+      margin-top:auto;
+      padding:28px 0;
+      color:rgba(255,255,255,0.9);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+    footer .inner{ display:flex; gap:12px; align-items:center; justify-content:space-between; max-width:var(--max-width); margin:0 auto; padding:0 16px; }
+
+    /* Responsiveness */
+    @media (max-width: 900px){
+      .services-grid{ grid-template-columns:repeat(2,1fr) }
+      .projects{ grid-template-columns:1fr }
+      .blog-list{ grid-template-columns:repeat(2,1fr) }
+      .hero{ flex-direction:column-reverse; gap:18px; padding:28px 0 }
+      .hero .visual{ width:100% }
+      nav ul{ display:none }
+      .mobile-toggle{ display:block }
+    }
+    @media (max-width: 520px){
+      .services-grid{ grid-template-columns:1fr }
+      .blog-list{ grid-template-columns:1fr }
+    }
+
+    /* Entrance animations */
+    .reveal { opacity:0; transform: translateY(12px) scale(0.995); transition: opacity 420ms ease, transform 420ms ease; will-change: opacity, transform; }
+    .reveal.visible { opacity:1; transform: translateY(0) scale(1); }
+  </style>
+</head>
+<body>
+  <div class="site" id="top">
+
+    <!-- Header / Nav -->
+    <header role="banner" aria-label="Site header">
+      <div class="nav-inner container" role="navigation" aria-label="Main navigation">
+        <div class="brand" aria-hidden="false">
+          <!-- NOTE: replace path with your actual favicon/logo file -->
+          <img src="assets/logo-ghbr.png" alt="GHBR logo" id="logo" />
+          <div class="title">GHBR — Centre for Global Health & Bioethics</div>
+        </div>
+
+        <nav aria-label="Primary">
+          <button class="mobile-toggle" aria-controls="mainmenu" aria-expanded="false">☰</button>
+          <ul id="mainmenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" aria-current="page">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Page content -->
+    <main class="container" id="content" role="main">
+      <!-- Hero / About intro -->
+      <section class="hero" aria-labelledby="about-heading">
+        <div class="text reveal">
+          <span class="eyebrow">About Us</span>
+          <h1 id="about-heading">Advancing ethical health research that changes lives.</h1>
+          <p class="lead">The Centre for Global Health & Bioethics Research (GHBR) partners with researchers, policymakers and communities to deliver high quality research and training in bioethics and maternal health. Our work spans applied research, policy guidance and capacity building across Africa and beyond.</p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="contact.html" title="Contact GHBR">Work with us</a>
+            <a class="btn ghost" href="#our-services" title="Our services">Explore services</a>
+          </div>
+        </div>
+
+        <div class="visual panel reveal" aria-hidden="true">
+          <!-- placeholder illustration - replace with a specific hero image or svg -->
+          <svg width="280" height="160" viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Research illustration">
+            <rect width="560" height="320" rx="12" fill="#fff" opacity="0.02"/>
+            <g transform="translate(30,24)" fill="none" stroke="#cfa33b" stroke-width="6" stroke-linecap="round">
+              <path d="M10 120 C70 40 180 40 240 120" opacity="0.65"/>
+              <circle cx="360" cy="80" r="44" opacity="0.9" />
+            </g>
+            <text x="30" y="190" font-family="sans-serif" fill="#fff" opacity="0.9" font-size="18">GHBR Research</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Mission & Values -->
+      <section class="section reveal" aria-labelledby="mission">
+        <div class="panel">
+          <h2 id="mission">Our mission</h2>
+          <p>Our mission is to improve health and advance ethics through rigorous research, pragmatic consultancy and targeted training. We place communities and ethical standards at the center of every project, ensuring that findings translate into policy and practice.</p>
+
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px;">
+            <div style="padding:12px;background:#fff;border-radius:10px;border:1px solid rgba(11,37,69,0.04)">
+              <strong>Research Excellence</strong>
+              <div style="font-size:0.95rem;margin-top:6px;color:#35424a">Methodologically rigorous studies and peer-reviewed outputs.</div>
+            </div>
+            <div style="padding:12px;background:#fff;border-radius:10px;border:1px solid rgba(11,37,69,0.04)">
+              <strong>Bioethics Guidance</strong>
+              <div style="font-size:0.95rem;margin-top:6px;color:#35424a">Ethical frameworks and policy support for institutions and studies.</div>
+            </div>
+            <div style="padding:12px;background:#fff;border-radius:10px;border:1px solid rgba(11,37,69,0.04)">
+              <strong>Capacity Building</strong>
+              <div style="font-size:0.95rem;margin-top:6px;color:#35424a">Tailored training courses in maternal health and research ethics.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core services -->
+      <section id="our-services" class="section reveal" aria-labelledby="services-heading">
+        <h2 id="services-heading" style="color:var(--white)">Services we provide</h2>
+        <div class="services-grid">
+          <article class="service" aria-labelledby="s1">
+            <h4 id="s1">Applied Research</h4>
+            <p>Design and execution of quantitative and qualitative research projects, including study design, data collection, analysis and publication support.</p>
+          </article>
+
+          <article class="service" aria-labelledby="s2">
+            <h4 id="s2">Bioethics Consultancy</h4>
+            <p>Ethical review support, development of ethics guidelines, and advisory services for institutions and projects with complex ethical considerations.</p>
+          </article>
+
+          <article class="service" aria-labelledby="s3">
+            <h4 id="s3">Training & Workshops</h4>
+            <p>Delivering capacity building in maternal health, research ethics, and responsible conduct of research to professionals and institutions.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Featured projects -->
+      <section class="section reveal" aria-labelledby="projects-heading">
+        <h2 id="projects-heading" style="color:var(--white)">Featured projects & publications</h2>
+        <div class="projects">
+          <div class="project">
+            <div style="width:118px;height:80px;background:linear-gradient(180deg,#0f3760,#0b2545);border-radius:8px;flex:0 0 118px"></div>
+            <div>
+              <h4 style="margin:0 0 6px 0">Maternal Health Ethics Study</h4>
+              <p style="margin:0;color:#55626d;font-size:0.95rem">A multi-site qualitative study exploring consent processes and cultural considerations.</p>
+            </div>
+          </div>
+
+          <div class="project">
+            <div style="width:118px;height:80px;background:linear-gradient(180deg,#0b2545,#07314a);border-radius:8px;flex:0 0 118px"></div>
+            <div>
+              <h4 style="margin:0 0 6px 0">Ethics in Pandemic Responses</h4>
+              <p style="margin:0;color:#55626d;font-size:0.95rem">Policy briefs and recommendations for ethical pandemic planning and research.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Latest insights / blog previews -->
+      <section class="section reveal" aria-labelledby="news-heading">
+        <h2 id="news-heading" style="color:var(--white)">Latest insights</h2>
+        <div class="blog-list">
+          <article class="post">
+            <h4 style="margin-top:0">Ethics in community consent</h4>
+            <p style="margin:6px 0;color:#183144">Reflections on consent models that respect community autonomy and individual rights.</p>
+            <a href="blog/post1.html" class="btn ghost" style="margin-top:8px">Read</a>
+          </article>
+
+          <article class="post">
+            <h4 style="margin-top:0">Training maternal health teams</h4>
+            <p style="margin:6px 0;color:#183144">Practical training modules for frontline clinicians and researchers.</p>
+            <a href="blog/post2.html" class="btn ghost" style="margin-top:8px">Read</a>
+          </article>
+
+          <article class="post">
+            <h4 style="margin-top:0">Open data & ethics</h4>
+            <p style="margin:6px 0;color:#183144">Balancing transparency with participant protections in health research.</p>
+            <a href="blog/post3.html" class="btn ghost" style="margin-top:8px">Read</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact strip -->
+      <section class="section reveal">
+        <div class="panel cta-strip" role="region" aria-label="Contact call to action">
+          <div>
+            <strong style="font-size:1.05rem">Interested in partnering with GHBR?</strong>
+            <div style="color:#3b4a5a;margin-top:6px">Reach out for research collaboration, training, or consultancy.</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <a class="btn primary" href="contact.html">Get in touch</a>
+            <a class="btn ghost" href="services.html">View services</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo" aria-label="Footer">
+      <div class="inner container">
+        <div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <img src="assets/logo-ghbr.png" alt="GHBR logo small" style="width:36px;height:36px;object-fit:contain">
+            <div style="font-weight:700;color:var(--white)">GHBR</div>
+          </div>
+          <div style="color:rgba(255,255,255,0.75);margin-top:8px;font-size:0.95rem">Improving health, advancing ethics.</div>
+        </div>
+
+        <div style="display:flex;gap:18px;align-items:center">
+          <div style="color:rgba(255,255,255,0.8)">
+            <div>Contact</div>
+            <div style="font-size:0.92rem">info@ghbr.org</div>
+          </div>
+
+          <div style="color:rgba(255,255,255,0.65);font-size:0.9rem">© <span id="year"></span> GHBR</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Minimal JS: mobile toggle, reveal on scroll -->
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile nav toggle
+    const toggle = document.querySelector('.mobile-toggle');
+    const menu = document.getElementById('mainmenu');
+    if(toggle){
+      toggle.addEventListener('click', ()=> {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        if(menu) menu.style.display = expanded ? 'none' : 'flex';
+      });
+    }
+
+    // IntersectionObserver for reveal animations
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.08});
+
+    revealEls.forEach(el => io.observe(el));
+
+    // small enhancement: keyboard focus ring for nav links
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.addEventListener('focus', ()=> a.classList.add('focused'));
+      a.addEventListener('blur', ()=> a.classList.remove('focused'));
+    });
+  </script>
+</body>
+</html>
