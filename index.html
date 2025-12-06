@@ -236,6 +236,13 @@
     .post .thumb{height:140px;background:#e9eef2}
     .post .meta{padding:14px}
 
+    /* Staff grid */
+    .staff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .staff-card{background:#fff;border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(12,58,89,0.04);box-shadow:0 8px 20px rgba(12,58,89,0.04)}
+    .staff-card img{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+    .staff-card h5{margin:6px 0 4px;font-size:16px;color:var(--navy)}
+    .staff-card p{font-size:13px;color:#596d73;margin:0}
+
     /* CTA strip before footer */
     .cta-strip{
       background: linear-gradient(90deg, rgba(12,58,89,0.04), rgba(12,58,89,0.02));
@@ -257,7 +264,7 @@
     }
     .footer-grid{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;justify-content:space-between}
     .footer-brand{display:flex;gap:12px;align-items:center}
-    .footer-brand img{height:44px}
+    .footer-brand img{height:40px} /* reduced to remedy size issue */
     .footer-links{display:flex;gap:18px;flex-wrap:wrap}
     .footer-links a{color:rgba(255,255,255,0.92)}
 
@@ -267,6 +274,7 @@
       .hero-copy{max-width:520px}
       .services-grid{grid-template-columns:repeat(2,1fr)}
       .grid-3{grid-template-columns:repeat(2,1fr)}
+      .staff-grid{grid-template-columns:repeat(2,1fr)}
     }
     @media (max-width:760px){
       .nav-links{display:none}
@@ -277,6 +285,7 @@
       .hero-inner{flex-direction:column-reverse;align-items:flex-start}
       .services-grid{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
+      .staff-grid{grid-template-columns:1fr}
       .footer-grid{flex-direction:column;gap:14px}
     }
 
@@ -291,7 +300,7 @@
     <div class="wrap nav-row" style="align-items:center;">
       <div class="brand" aria-hidden="false">
         <!-- Replace this src with your final GHBR logo PNG/SVG (high-res). -->
-        <img id="logo" src="assets/images/logo-ghbr 1.png" alt="GHBR logo — Centre for Global Health & Bioethics Research" />
+        <img id="logo" src="assets/images/logo-ghbr-compact.png" alt="GHBR logo — Centre for Global Health & Bioethics Research" />
         <div class="abbr" style="font-size:18px">GHBR</div>
       </div>
 
@@ -299,7 +308,7 @@
         <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="mobileMenu">☰</button>
 
         <div class="nav-links" id="desktopMenu">
-          <a href="#home">Home</a>
+          <a href="index.html">Home</a>
           <a href="about.html">About</a>
           <a href="research.html">Research</a>
           <a href="services.html">Services</a>
@@ -313,7 +322,7 @@
     <!-- mobile menu (hidden by default) -->
     <div id="mobileMenu" style="display:none;padding:12px 0;border-top:1px solid rgba(12,58,89,0.03);">
       <div class="wrap" style="display:flex;flex-direction:column;gap:8px">
-        <a href="#home" style="padding:10px;border-radius:10px">Home</a>
+        <a href="index.html" style="padding:10px;border-radius:10px">Home</a>
         <a href="about.html" style="padding:10px;border-radius:10px">About</a>
         <a href="research.html" style="padding:10px;border-radius:10px">Research</a>
         <a href="services.html" style="padding:10px;border-radius:10px">Services</a>
@@ -328,7 +337,7 @@
     <div class="wrap hero-inner">
       <div class="hero-copy reveal">
         <h1 class="hero-title">Advancing Global Health Through Ethical Research</h1>
-        <p class="lead">Promoting responsible research, strengthening bioethics, and supporting capacity building across Africa — evidence you can trust.</p>
+        <p class="lead">Promoting responsible research, strengthening bioethics, and supporting capacity building across Ghana and beyond — evidence you can trust.</p>
 
         <div class="hero-cta">
           <a class="btn primary" href="research.html">Discover Our Work</a>
@@ -346,13 +355,17 @@
   <!-- MAIN -->
   <main>
     <div class="wrap">
-      <!-- About quick -->
+      <!-- Who We Are (updated with your content) -->
       <section id="about" class="reveal">
         <div style="display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap;">
           <div style="flex:1 1 520px">
             <h2 class="section-title">Who We Are</h2>
-            <p>Centre for Global Health & Bioethics Research (CGHBR) provides independent, high-quality research and consultancy services with a focus on maternal health and ethical practice. We help organisations, researchers and governments make informed, evidence-based decisions that improve health outcomes.</p>
-            <p style="margin-top:14px">We provide: bespoke research design, policy evaluation, institutional capacity building and hands-on bioethics guidance for research teams.</p>
+            <p>
+              Centre for Global Health &amp; Bioethics Research (CGHBR) provides independent, high-quality research and consultancy services. We help private organisations and institutions in the public sector make evidence-based decisions that improve health outcomes.
+            </p>
+            <p style="margin-top:14px">
+              We provide relevant data through rigorous methodology, guided by ethical principles to ensure equity. Established in 2024 in Ghana, the centre offers policy evaluation, institutional capacity building, and hands-on bioethics training.
+            </p>
           </div>
           <div style="flex:0 0 320px">
             <img src="https://media.istockphoto.com/id/1488859382/photo/laboratory-scientist-teamwork-or-test-tube-of-leaf-sample-in-medical-research-collaboration.jpg?s=612x612&w=0&k=20&c=w3uGMEkXF6AJ9cmUASzN-DSsYiUDON5dYDymzARMF3s=" alt="Team discussion" style="width:100%;border-radius:10px;box-shadow:0 10px 30px rgba(12,58,89,0.09)">
@@ -360,76 +373,93 @@
         </div>
       </section>
 
-      <!-- Services -->
+      <!-- Services (kept concise on homepage) -->
       <section id="services" style="margin-top:22px" class="reveal">
         <h3 class="section-title">Our Core Focus Areas</h3>
         <div class="services-grid" aria-hidden="false">
           <article class="card">
             <h4>Bioethics Consultancy</h4>
-            <p>Expert ethical guidance for institutions, investigators and organisations working in sensitive health domains — IRB support, ethics frameworks and protocol reviews.</p>
+            <p>Expert ethical guidance for institutions, investigators and organisations — IRB support, ethics frameworks and protocol reviews.</p>
           </article>
 
           <article class="card">
             <h4>Health Research</h4>
-            <p>Evidence-based research with emphasis on maternal health, public health systems, and interventions that inform policy and practice.</p>
+            <p>Evidence-based research with emphasis on maternal health, public health systems and interventions that inform policy and practice.</p>
           </article>
 
           <article class="card">
             <h4>Training & Capacity Building</h4>
-            <p>Workshops, mentorship and structured training for researchers and health professionals on research ethics, protocol development and implementation research.</p>
+            <p>Workshops, mentorship and structured training for researchers and health professionals on research ethics and implementation research.</p>
           </article>
         </div>
       </section>
 
-      <!-- Featured projects / publications -->
+      <!-- Featured Projects & Publications (updated with your content) -->
       <section id="research" class="reveal">
         <h3 class="section-title">Featured Projects & Publications</h3>
 
         <div class="grid-3" style="margin-top:8px">
+          <!-- Ongoing Project 1 -->
           <article class="post">
-            <div class="thumb" style="background-image:url('assets/images/mother\ -\ child.jpeg');background-size:cover;background-position:center"></div>
+            <div class="thumb" style="background-image:url('assets/images/bioethicists-workforce.jpg');background-size:cover;background-position:center"></div>
             <div class="meta">
-              <h4 style="margin:0 0 6px;font-family:'Merriweather',serif">Ethical considerations in maternal health studies</h4>
-              <p style="font-size:14px;color:#59707b;margin:0">Short summary: how we supported an institutional review board to expedite safe studies in rural clinics.</p>
+              <h4 style="margin:0 0 6px;font-family:'Merriweather',serif">Bioethicists in Ghana’s Workforce: Situational Analysis</h4>
+              <p style="font-size:14px;color:#59707b;margin:0">
+                A qualitative study exploring employment opportunities for bioethicists in Ghana, conducted under the NYU–University of Ghana Research Integrity Training Program (RITP). Funded by NYU-UG RITP.
+              </p>
             </div>
           </article>
 
+          <!-- Ongoing Project 2 -->
           <article class="post">
-            <div class="thumb" style="background-image:url('https://cdn.who.int/media/images/default-source/funding/afro_exrjpg.jpg?sfvrsn=fec241e0_3');background-size:cover;background-position:center"></div>
+            <div class="thumb" style="background-image:url('assets/images/chale-wote-study.jpg');background-size:cover;background-position:center"></div>
             <div class="meta">
-              <h4 style="margin:0 0 6px;font-family:'Merriweather',serif">Strengthening policy for public health</h4>
-              <p style="font-size:14px;color:#59707b;margin:0">A policy evaluation study that reshaped maternal care guidelines across three regions.</p>
+              <h4 style="margin:0 0 6px;font-family:'Merriweather',serif">Assessing Economic & Socio-Cultural Impact of Chale Wote</h4>
+              <p style="font-size:14px;color:#59707b;margin:0">
+                Examining why James Town did not ultimately host the Chale Wote Street Arts Festival and assessing the festival's socio-economic and cultural effects from stakeholders' perspectives.
+              </p>
             </div>
           </article>
 
+          <!-- Completed Project -->
           <article class="post">
-            <div class="thumb" style="background-image:url('https://th.bing.com/th/id/R.8c3bfa81e89192a5d83f85a0b5f8da0d?rik=8sbFOWAmGiQ%2brQ&pid=ImgRaw&r=0');background-size:cover;background-position:center"></div>
+            <div class="thumb" style="background-image:url('assets/images/contra-health.jpg');background-size:cover;background-position:center"></div>
             <div class="meta">
-              <h4 style="margin:0 0 6px;font-family:'Merriweather',serif">Capacity building for ethics committees</h4>
-              <p style="font-size:14px;color:#59707b;margin:0">Hands-on training modules and toolkits for ethics committees and institutional reviewers.</p>
+              <h4 style="margin:0 0 6px;font-family:'Merriweather',serif">Contra Health — mHealth Study on Contraceptive Use</h4>
+              <p style="font-size:14px;color:#59707b;margin:0">
+                Quasi-experimental study evaluating the 'Contra Health' SRH mobile app's effect on contraceptive uptake and discontinuation among reproductive-age women at two government hospitals.
+              </p>
             </div>
           </article>
         </div>
+
+        <div style="margin-top:12px;font-size:14px;color:#475b62">
+          <em>More details and downloadable reports will be available on the Research page.</em>
+        </div>
       </section>
 
-      <!-- News / Blog teaser -->
+      <!-- Latest News & Insights (updated) -->
       <section id="blog" class="reveal" style="margin-top:28px">
         <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
           <div style="flex:1 1 520px">
             <h3 class="section-title">Latest News & Insights</h3>
+
             <article style="display:flex;gap:12px;align-items:flex-start;margin-top:12px">
-              <img src="assets/images/male-doctor-vector.jpg" alt="Blog 1" style="width:140px;height:90px;object-fit:cover;border-radius:8px">
+              <img src="assets/images/advance-directives.jpg" alt="Advance directives" style="width:140px;height:90px;object-fit:cover;border-radius:8px">
               <div>
-                <p style="margin:0;font-weight:700">Navigating Ethical Challenges in Health Research</p>
-                <p style="margin:6px 0 0;font-size:14px;color:#556b73">April 19, 2025 — Thought piece on consent and vulnerable populations.</p>
+                <p style="margin:0;font-weight:700">Advance Directives in Ghana: Policy Implications for Dementia Care</p>
+                <p style="margin:6px 0 0;font-size:14px;color:#556b73">
+                  Kwame K. Adjei, Irene Adjei, Linda, Isaac Boadu — Content analysis of three Ghanaian policy documents exploring the inclusion of advance directives and implications for dementia care.
+                </p>
+                <p style="margin:8px 0 0"><a href="https://medicalhumanities.bmj.com/" target="_blank" rel="noopener noreferrer">Read the paper</a></p>
               </div>
             </article>
 
             <article style="display:flex;gap:12px;align-items:flex-start;margin-top:14px">
-              <img src="assets/images/male-doctor-vector.jpg" alt="Blog 2" style="width:140px;height:90px;object-fit:cover;border-radius:8px">
+              <img src="assets/images/wcri.jpg" alt="WCRI conference" style="width:140px;height:90px;object-fit:cover;border-radius:8px">
               <div>
-                <p style="margin:0;font-weight:700">Improving Ethical Standards in Maternal Health</p>
-                <p style="margin:6px 0 0;font-size:14px;color:#556b73">March 23, 2025 — A report summarizing training outcomes.</p>
+                <p style="margin:0;font-weight:700">World Congress on Research Integrity — Vancouver</p>
+                <p style="margin:6px 0 0;font-size:14px;color:#556b73">Scheduled 3–6 May. CGHBR team to share updates and network with global research integrity leaders. <a href="https://wcrif.org/" target="_blank" rel="noopener noreferrer">More info</a></p>
               </div>
             </article>
 
@@ -443,6 +473,45 @@
               <button class="btn primary" style="width:100%">Subscribe</button>
             </form>
           </aside>
+        </div>
+      </section>
+
+      <!-- Staff / CEO teaser -->
+      <section id="team" class="reveal" style="margin-top:28px">
+        <h3 class="section-title">Leadership & Staff (Select)</h3>
+        <div style="display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start">
+          <!-- main CEO card -->
+          <div style="background:#fff;border-radius:12px;padding:18px;box-shadow:0 10px 30px rgba(12,58,89,0.06);border:1px solid rgba(12,58,89,0.04)">
+            <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+              <img src="assets/images/israel-kesse.jpg" alt="Israel Kesse Adjei — CEO" style="width:160px;height:160px;object-fit:cover;border-radius:8px">
+              <div>
+                <h4 style="margin:0;font-family:'Merriweather',serif">Israel Kwame Kesse Adjei</h4>
+                <p style="margin:6px 0 0;color:#556b73">Chief Executive Officer & Founder — researcher with 15+ years’ experience in maternal health, bioethics and public health; adjunct lecturer and PhD (pending) candidate at the University of Ghana.</p>
+              </div>
+            </div>
+            <div style="margin-top:12px;font-size:14px;color:#4a666e">
+              <strong>Contact:</strong> info4ghbr@gmail.com
+            </div>
+          </div>
+
+          <!-- smaller staff cards column -->
+          <div>
+            <div class="staff-grid" style="grid-template-columns:1fr;gap:12px">
+              <div class="staff-card">
+                <img src="assets/images/irene-adjei.jpg" alt="Irene Apewe Adjei">
+                <h5>Irene Apewe Adjei</h5>
+                <p>Deputy CEO — Research fellow and deputy chief nutritionist, pursuing PhD in Public Health.</p>
+              </div>
+
+              <div class="staff-card">
+                <img src="assets/images/isaac-boadu.jpg" alt="Isaac Boadu">
+                <h5>Isaac Boadu (PhD)</h5>
+                <p>Head of Research — experienced research coordinator and specialist in project management.</p>
+              </div>
+
+              <!-- Add more staff cards on About page; homepage keeps teasers -->
+            </div>
+          </div>
         </div>
       </section>
 
@@ -464,7 +533,7 @@
         <h3 class="section-title">Contact</h3>
         <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">
           <div style="flex:1 1 520px">
-            <p style="margin:0 0 12px">Have a project, partnership or question? Use the contact form or email us directly.</p>
+            <p style="margin:0 0 12px">Have a project, partnership or question? Use the contact form or email us at <strong>info4ghbr@gmail.com</strong>.</p>
             <form style="display:grid;grid-template-columns:1fr 1fr;gap:12px" onsubmit="event.preventDefault();alert('Demo: message sent.');">
               <input type="text" placeholder="Full name" required style="padding:12px;border-radius:10px;border:1px solid rgba(12,58,89,0.06)">
               <input type="email" placeholder="Email address" required style="padding:12px;border-radius:10px;border:1px solid rgba(12,58,89,0.06)">
@@ -484,7 +553,7 @@
               <p style="margin:6px 0 0">+233 24 326 2616</p>
               <hr style="border:none;border-top:1px solid rgba(12,58,89,0.06);margin:12px 0">
               <strong>Email</strong>
-              <p style="margin:6px 0 0">info@cghbr.org</p>
+              <p style="margin:6px 0 0">info4ghbr@gmail.com</p>
             </div>
           </div>
         </div>
@@ -498,7 +567,7 @@
     <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/images/logo-ghbr 1.png" alt="GHBR logo" style="height:46px">
+          <img src="assets/images/logo-ghbr-compact.png" alt="GHBR logo" style="height:40px">
           <div>
             <div style="font-weight:700;color:var(--gold)">GHBR</div>
             <div style="font-size:13px;color:rgba(255,255,255,0.8)">Improving Health, Advancing Ethics</div>
@@ -517,7 +586,7 @@
       </div>
 
       <div style="margin-top:18px;border-top:1px solid rgba(255,255,255,0.06);padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
-        <small style="opacity:0.86">© <span id="year"></span> Centre for Global Health & Bioethics Research. All rights reserved.</small>
+        <small style="opacity:0.86">© <span id="year"></span> Centre for Global Health &amp; Bioethics Research. All rights reserved.</small>
         <div style="opacity:0.86">Built with care • Accessibility-conscious</div>
       </div>
     </div>
