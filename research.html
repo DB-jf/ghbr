@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>CGHBR — Research & Publications</title>
+  <title>GHBR — Research & Publications</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 
   <style>
-    /* SAME PALETTE AS HOMEPAGE */
+    /* =====================================
+       GLOBAL BRAND PALETTE (MATCHES HOME)
+    ======================================*/
     :root{
       --navy:#0c3a59;
       --gold:#c99b2a;
@@ -21,6 +23,7 @@
       --max-width:1100px;
       --pad:24px;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -28,26 +31,60 @@
       background:#fff;
       color:var(--text);
       line-height:1.55;
+      overflow-x:hidden;
     }
+
     img{max-width:100%;border-radius:10px}
 
-    .wrap{max-width:var(--max-width);margin:0 auto;padding:0 var(--pad)}
+    .wrap{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:0 var(--pad);
+    }
 
-    /* NAV — SAME AS HOME */
+    /* =====================================
+       NAVIGATION (IDENTICAL TO HOME)
+    ======================================*/
     header.site-header{
-      position:sticky;top:0;z-index:99;
-      background:rgba(255,255,255,0.98);
-      backdrop-filter:blur(6px);
+      position:sticky;
+      top:0;
+      z-index:99;
+      background:rgba(255,255,255,0.97);
+      backdrop-filter:blur(6px) saturate(120%);
       border-bottom:1px solid rgba(12,58,89,0.05);
     }
+
     .nav-row{
       height:72px;
       display:flex;
       justify-content:space-between;
       align-items:center;
     }
-    nav.main-nav{display:flex;align-items:center;gap:14px}
-    .nav-links{display:flex;gap:6px}
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .brand img{height:44px}
+    .brand .abbr{
+      font-weight:800;
+      font-family:"Merriweather",serif;
+      color:var(--gold);
+      letter-spacing:0.6px;
+    }
+
+    nav.main-nav{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:6px;
+      align-items:center;
+    }
     .nav-links a{
       padding:10px 14px;
       border-radius:var(--radius-pill);
@@ -55,51 +92,83 @@
       color:var(--navy);
       position:relative;
       transition:var(--transition);
+      text-decoration:none;
     }
     .nav-links a::after{
-      content:"";position:absolute;inset:0;
-      border-radius:inherit;border:2px solid transparent;
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      border:2px solid transparent;
       transition:var(--transition);
     }
     .nav-links a:hover::after{border-color:var(--gold)}
+
     .nav-cta{
       background:var(--gold-soft);
       padding:10px 16px;
       border-radius:12px;
       font-weight:700;
       color:var(--navy);
+      box-shadow:0 6px 20px rgba(12,58,89,0.08);
+      text-decoration:none;
     }
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:44px}
-    .brand .abbr{font-weight:800;font-family:"Merriweather";color:var(--gold)}
+
     .mobile-toggle{display:none}
 
-    h1,h2,h3,h4{font-family:"Merriweather",serif;color:var(--navy)}
+    /* =====================================
+       TITLES
+    ======================================*/
+    h1,h2,h3,h4{
+      font-family:"Merriweather",serif;
+      color:var(--navy);
+    }
     h1{font-size:36px;margin:0 0 12px}
     h2{font-size:28px;margin:0 0 14px}
     h3{font-size:22px;margin:0 0 12px}
 
-    /* PAGE HEADER */
+    /* =====================================
+       PAGE HERO (MATCH HOMEPAGE THEME)
+    ======================================*/
     .page-hero{
       background:linear-gradient(180deg,var(--navy),#0f2f47);
       color:#fff;
       padding:70px 0;
     }
-    .page-hero p{max-width:680px;font-size:17px;margin:10px 0 0}
+    .page-hero p{
+      max-width:680px;
+      font-size:17px;
+      opacity:0.95;
+      margin:10px 0 0;
+    }
 
-    /* SECTIONS */
-    section{padding:40px 0;border-bottom:1px solid rgba(12,58,89,0.05)}
+    /* =====================================
+       SECTIONS
+    ======================================*/
+    section{
+      padding:40px 0;
+      border-bottom:1px solid rgba(12,58,89,0.05);
+    }
 
+    /* =====================================
+       PROJECT BLOCK (MATCHES CARD STYLE)
+    ======================================*/
     .project-block{
       background:#fff;
       padding:22px;
       border-radius:12px;
       border:1px solid rgba(12,58,89,0.05);
-      box-shadow:0 6px 20px rgba(12,58,89,0.06);
-      margin-bottom:18px;
+      box-shadow:0 8px 26px rgba(12,58,89,0.06);
+      margin-bottom:22px;
     }
-    .project-block h3{margin-top:0}
+    .project-block h3{
+      margin-top:0;
+      color:var(--navy);
+    }
 
+    /* =====================================
+       GRID FOR STAFF & ADVISORY TEAMS
+    ======================================*/
     .staff-grid,
     .advisory-grid{
       display:grid;
@@ -111,33 +180,62 @@
       background:#fff;
       padding:18px;
       border-radius:12px;
-      box-shadow:0 6px 20px rgba(12,58,89,0.06);
       border:1px solid rgba(12,58,89,0.05);
+      box-shadow:0 8px 22px rgba(12,58,89,0.06);
     }
-    .card-person h4{margin:6px 0 10px;font-size:19px}
 
+    .card-person h4{
+      margin:6px 0 10px;
+      font-size:19px;
+      color:var(--navy);
+    }
+
+    /* =====================================
+       FOOTER (IDENTICAL TO HOME)
+    ======================================*/
     footer.site-footer{
       background:var(--navy);
       color:#fff;
-      padding:36px 0;margin-top:40px;
+      padding:36px 0;
+      margin-top:40px;
     }
     .footer-grid{
-      display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      flex-wrap:wrap;
+      gap:20px;
     }
-    .footer-brand{display:flex;align-items:center;gap:12px}
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
     .footer-brand img{height:40px}
-    .footer-links a{color:rgba(255,255,255,0.9);margin-right:14px}
+
+    .footer-links a{
+      color:rgba(255,255,255,0.92);
+      margin-right:16px;
+      text-decoration:none;
+    }
 
     @media(max-width:760px){
       .nav-links{display:none}
-      .mobile-toggle{display:block;font-size:26px;background:none;border:none}
+      .mobile-toggle{
+        display:block;
+        font-size:26px;
+        background:none;
+        border:none;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- =====================================
+     NAVIGATION
+====================================== -->
 <header class="site-header">
   <div class="wrap nav-row">
     <div class="brand">
@@ -154,7 +252,6 @@
         <a href="research.html">Research</a>
         <a href="services.html">Services</a>
         <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact</a>
       </div>
 
       <a class="nav-cta" href="contact.html">Contact</a>
@@ -162,89 +259,100 @@
   </div>
 </header>
 
-<!-- PAGE HERO -->
+<!-- =====================================
+     PAGE HERO
+====================================== -->
 <section class="page-hero">
   <div class="wrap">
     <h1>Research & Publications</h1>
-    <p>Our work focuses on ethical, evidence-based research that supports public health, strengthens institutions, and advances bioethics across Ghana and beyond.</p>
-  </div>
-</section>
-
-<!-- WHO WE ARE (UPDATED TEXT) -->
-<section>
-  <div class="wrap">
-    <h2>Who We Are</h2>
     <p>
-      Centre for Global Health & Bioethics Research (CGHBR) provides independent, high-quality research and consultancy services. 
-      We help private organisations and public sector institutions make evidence-based decisions that improve health outcomes.  
-      Established in 2024 in Ghana, our work is grounded in rigorous methodology and guided by ethical principles to ensure equity.
-      We also offer policy evaluation, institutional capacity building, and hands-on bioethics training.
+      Our work strengthens institutions, advances bioethics, promotes responsible scientific inquiry, 
+      and supports public health improvements across Ghana and beyond.
     </p>
   </div>
 </section>
 
-<!-- FEATURED PROJECTS & PUBLICATIONS -->
+<!-- =====================================
+     WHO WE ARE
+====================================== -->
+<section>
+  <div class="wrap">
+    <h2>Who We Are</h2>
+    <p>
+      The Centre for Global Health & Bioethics Research (GHBR) provides independent, high-quality research 
+      and consultancy services. We support both private and public institutions in making evidence-based decisions 
+      that improve health outcomes, strengthen systems, and advance ethical research practices.
+    </p>
+  </div>
+</section>
+
+<!-- =====================================
+     FEATURED PROJECTS
+====================================== -->
 <section>
   <div class="wrap">
     <h2>Featured Projects & Publications</h2>
 
-    <!-- ONGOING PROJECT 1 -->
     <div class="project-block">
       <h3>Bioethicists in Ghana’s Workforce</h3>
       <p>
-        This qualitative study examines employment opportunities for bioethicists in Ghana as part of the 
-        New York University–University of Ghana Research Integrity Training Program (RITP). 
-        The study is fully funded by the NYU–UG RITP and aims to provide insight into strengthening the bioethics workforce.
+        A qualitative national study exploring employment pathways for bioethicists in Ghana under the 
+        NYU–University of Ghana Research Integrity Training Program (RITP).  
       </p>
     </div>
 
-    <!-- ONGOING PROJECT 2 -->
     <div class="project-block">
-      <h3>Economic & Socio-Cultural Impact of the Chale Wote Festival</h3>
+      <h3>Socio-Cultural & Economic Impact of Chale Wote Festival</h3>
       <p>
-        This study investigates why James Town — a culturally rich community — no longer serves as the venue for the Chale Wote Street Art Festival.  
-        It further explores the socio-economic and cultural impact of the festival from the perspective of community stakeholders.
+        An assessment of community perceptions, cultural outcomes, and economic implications of relocating the 
+        Chale Wote Street Art Festival away from James Town.
       </p>
     </div>
 
-    <!-- COMPLETED PROJECT -->
     <div class="project-block">
-      <h3>Impact of ‘Contra Health’ Mobile Application on Contraceptive Use</h3>
+      <h3>Contra Health — Mobile App Study on Contraceptive Use</h3>
       <p>
-        This quasi-experimental study evaluated the effects of a sexual and reproductive health mobile app on contraceptive use among women 
-        at Shai-Osudoku Hospital. The research also assessed discontinuation rates among app users.
+        A quasi-experimental evaluation of a reproductive health mobile application examining contraceptive uptake 
+        and discontinuation trends among women in Ghana.
       </p>
-      <p><strong>Type:</strong> Mobile App Intervention Study</p>
+      <p><strong>Study Type:</strong> Digital Health / mHealth Intervention</p>
     </div>
+
   </div>
 </section>
 
-<!-- LATEST NEWS & INSIGHTS -->
+<!-- =====================================
+     LATEST NEWS
+====================================== -->
 <section>
   <div class="wrap">
     <h2>Latest News & Insight</h2>
 
     <div class="project-block">
-      <h3>Advance Directives in Ghana — Policy Content Analysis</h3>
+      <h3>Advance Directives in Ghana — Policy Analysis</h3>
       <p>
-        Authors: Kwame K. Adjei, Irene Adjei, Linda, Isaac Boadu  
-        Advance directives ensure patient autonomy when decision-making capacity is impaired.  
-        However, little is known about their inclusion in Ghanaian policy documents.
+        A detailed review of national health policy documents to determine the presence and role of advance directives, 
+        with implications for dementia and end-of-life care.
       </p>
-      <p>Read more: <a style="color:var(--gold)" href="https://mh.bmj.com/content/advance-directives-ghana" target="_blank">Medical Humanities — Advance Directives in Ghana</a></p>
+      <p>Read more at: 
+        <a style="color:var(--gold)" href="https://mh.bmj.com" target="_blank">Medical Humanities Journal</a>
+      </p>
     </div>
 
     <div class="project-block">
-      <h3>World Congress on Research Integrity — 2026</h3>
+      <h3>World Congress on Research Integrity — Vancouver 2026</h3>
       <p>
-        The World Congress on Research Integrity will take place from 3rd–6th May 2026 in Vancouver, Canada.  
-        More information: <a style="color:var(--gold)" href="#">WCRI2026</a>
+        GHBR researchers will participate in the 2026 WCRI event, engaging with global leaders in research integrity, 
+        policy reform, and ethical governance.
       </p>
     </div>
+
   </div>
 </section>
 
-<!-- STAFF PROFILES -->
+<!-- =====================================
+     STAFF PROFILES
+====================================== -->
 <section>
   <div class="wrap">
     <h2>Staff Profiles</h2>
@@ -254,45 +362,45 @@
       <div class="card-person">
         <h4>Israel Kwame Kesse Adjei — CEO & Founder</h4>
         <p>
-          Over 15 years of research experience; Deputy Chief Nutritionist, Ghana Health Service.  
-          Expertise includes maternal health, vaccine development, bioethics, reproductive health, and non-communicable diseases.  
-          Adjunct faculty member, School of Public Health (UG).
+          Over 15 years of research experience spanning maternal health, vaccine development, bioethics, 
+          reproductive health, and NCD prevention.
         </p>
       </div>
 
       <div class="card-person">
         <h4>Irene Apewe Adjei — Deputy CEO</h4>
         <p>
-          Deputy Chief Nutritionist with over 15 years of research experience, currently pursuing a PhD in Public Health 
-          at KNUST. Deep expertise in community and nutrition-based research.
+          Deputy Chief Nutritionist, Ghana Health Service, and PhD candidate in Public Health,  
+          with deep experience in community health research.
         </p>
       </div>
 
       <div class="card-person">
         <h4>Isaac Boadu (PhD) — Head of Research</h4>
         <p>
-          Experienced in leading and coordinating multidisciplinary research projects across health and social domains.
+          Leads cross-disciplinary health and social research initiatives with expertise in advanced methodology 
+          and project coordination.
         </p>
       </div>
 
       <div class="card-person">
         <h4>Samuella Afua Adjei — Head of Administration</h4>
         <p>
-          Over 10 years of administrative leadership experience within the Ghana Health Service.
+          Administrative specialist with over 10 years of service in the Ghana Health Service.
         </p>
       </div>
 
       <div class="card-person">
         <h4>Emmanuel Kofi Adjei — Head, Religion & Art Research</h4>
         <p>
-          Leads research efforts exploring intersections of religion, culture, art, and health.
+          Leads research on intersections between culture, traditional belief systems, art, and population health.
         </p>
       </div>
 
       <div class="card-person">
-        <h4>Dr. Sarah Azindow — Head, Clinical Research</h4>
+        <h4>Dr. Sarah Azindow — Head of Clinical Research</h4>
         <p>
-          A medical doctor with expertise in clinical research, public health, and evidence-based medical practice.
+          Medical doctor with expertise in public health and clinical research supervision.
         </p>
       </div>
 
@@ -300,7 +408,9 @@
   </div>
 </section>
 
-<!-- ADVISORY COMMITTEE -->
+<!-- =====================================
+     ADVISORY COMMITTEE
+====================================== -->
 <section>
   <div class="wrap">
     <h2>Advisory Committee</h2>
@@ -308,33 +418,31 @@
     <div class="advisory-grid">
 
       <div class="card-person">
-        <h4>Chairman — Dr. Adolf Awuah</h4>
+        <h4>Chair — Dr. Adolf Awuah</h4>
         <p>
-          Public health scientist with expertise spanning biochemistry, epidemiology, bioethics, research integrity, 
-          molecular biology, and public health emergencies.
+          Public health scientist with specialty in bioethics, epidemiology, molecular biology, and 
+          research integrity governance.
         </p>
       </div>
 
       <div class="card-person">
-        <h4>Deputy Chairman — Prof. Samuel Owusu-Asiedu</h4>
+        <h4>Deputy Chair — Prof. Samuel Owusu-Asiedu</h4>
         <p>
-          Senior Research Fellow and Administrator of the UCC IRB, specializing in research ethics and innovation.
+          Senior Research Fellow and UCC IRB administrator, specialising in innovation and ethical research systems.
         </p>
       </div>
 
       <div class="card-person">
         <h4>Secretary — Dr. Pamela Emefa Selormey</h4>
         <p>
-          Principal Research Technologist and Research Ethicist (CSIR).  
-          Expertise in infectious disease research, epidemiology, parasitology and bioethics.
+          Research ethicist and technologist (CSIR) with expertise in infectious diseases, parasitology, and public health ethics.
         </p>
       </div>
 
       <div class="card-person">
         <h4>Board Member — Dr. Irene Tsey</h4>
         <p>
-          Public health specialist and lecturer (UHAS).  
-          Expertise in social science perspectives on research ethics and community health.
+          Public health specialist, educator, and advocate for community-centered research ethics.
         </p>
       </div>
 
@@ -342,7 +450,9 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- =====================================
+     CONTACT INFORMATION
+====================================== -->
 <section>
   <div class="wrap">
     <h2>Official Email</h2>
@@ -350,7 +460,9 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- =====================================
+     FOOTER
+====================================== -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -372,7 +484,7 @@
     </div>
 
     <div style="margin-top:18px;border-top:1px solid rgba(255,255,255,0.1);padding-top:12px;display:flex;justify-content:space-between;flex-wrap:wrap">
-      <small>© <span id="year"></span> CGHBR. All rights reserved.</small>
+      <small>© <span id="year"></span> GHBR. All rights reserved.</small>
       <small>Ethics-Driven Research • Accessibility-Conscious</small>
     </div>
   </div>
