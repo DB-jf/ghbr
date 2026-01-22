@@ -145,10 +145,22 @@
       box-shadow:0 16px 40px rgba(12,58,89,0.10);
     }
     .thumb{
-      height:240px;
-      background-size:cover;
-      background-position:center;
-    }
+  width:100%;
+  height:320px;               /* Larger image */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f6f7f9;
+}
+
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:contain;         /* FULL image visible */
+  object-position:center;
+}
+
+
     .post-content{
       padding:18px 20px;
     }
@@ -297,7 +309,7 @@
 
       <!-- Post 1 -->
       <article class="post reveal">
-        <div class="thumb" style="background-image:url('https://media.istockphoto.com/id/1341098021/photo/medical-ethics-text-on-white-background-with-stethoscope.jpg?s=612x612&w=0&k=20&c=VCWpShqm8JWhv6mWu29c2Rd09K0mxjp5bTWE8Bawinc=');"></div>
+        <div class="thumb"><img src="assets/images/field image 1.jpeg"></div>
         <div class="post-content">
           <h2>Navigating Ethical Challenges in Field Research</h2>
           <p>How CGHBR supports investigators working with vulnerable populations to maintain global ethics standards.</p>
@@ -307,21 +319,30 @@
 
       <!-- Post 2 -->
       <article class="post reveal">
-        <div class="thumb" style="background-image:url('assets/images/Doc & Pregnant Women.png');"></div>
+        <div class="thumb"><img src="assets/images/Doc & Pregnant Women.png"></div>
         <div class="post-content">
           <h2>Improving Ethical Standards in Maternal Health</h2>
-          <p>A deep dive into our 2024–25 training sessions for ethics committees across Ghana.</p>
+          <p>A deep dive into our [--year--] training sessions for ethics committees across Ghana.</p>
           <div class="meta">March 23, 2025 • Maternal Health • 8 min read</div>
         </div>
       </article>
 
       <!-- Post 3 -->
       <article class="post reveal">
-        <div class="thumb" style="background-image:url('https://msf.org.uk/sites/default/files/2020-12/MSB29764_Medium.jpg');"></div>
+        <div class="thumb"><img src="assets/images/field image 3.jpeg"></div>
         <div class="post-content">
           <h2>Strengthening Public Health Policy Through Evidence</h2>
           <p>How research collaborations shaped maternal care guidelines across three regions.</p>
           <div class="meta">January 10, 2025 • Public Health • 5 min read</div>
+        </div>
+      </article>
+      <!-- Post 4 -->
+      <article class="post reveal">
+        <div class="thumb"><img src="https://www.buhave.com/dictionary/wp-content/uploads/2025/07/Exemplary-Meaning-Definition-Synonyms-Antonyms.webp"></div>
+        <div class="post-content">
+          <h2>Exemplary Researchers in Ghana</h2>
+          <p>Prof Sam Adjei is renowned for establishing research in the Ghana Health Service. He was instrumental in setting up the three GHS research centres namely: Dodowa, Kintampo and Navrongo Research Centres. “Uncle Sam” as he was affectionately called, was the founding Director of the Health Research Unit (now the Research & Development Division) and the first Deputy Director-General of the Ghana Health Service. </p>
+          <div class="meta">Lancet Obituary: Sam Adjei - The Lancet</div>
         </div>
       </article>
 
