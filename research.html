@@ -5,36 +5,36 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>GHBR — Research & Publications</title>
 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
-
+  <link rel="icon" type="image/png" href="/ghbr/assets/images/favicon.png">
   <style>
-    /* =====================================
-       GLOBAL BRAND PALETTE (MATCHES HOME)
-    ======================================*/
     :root{
       --navy:#0c3a59;
       --gold:#c99b2a;
       --gold-soft:#e0b54d;
       --text:#0a2230;
       --muted:#f6f7f9;
-      --glass:rgba(255,255,255,0.95);
-      --radius-pill:50px;
       --transition:220ms cubic-bezier(.2,.9,.25,1);
       --max-width:1100px;
       --pad:24px;
+      --radius:14px;
+      --shadow-sm:0 8px 20px rgba(12,58,89,0.06);
+      --shadow-md:0 18px 40px rgba(12,58,89,0.10);
+      --border:1px solid rgba(12,58,89,0.06);
     }
 
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:"Inter",sans-serif;
-      background:#fff;
+      font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      background:linear-gradient(180deg,#fff,#f8fbfd 60%);
       color:var(--text);
       line-height:1.55;
       overflow-x:hidden;
     }
-
-    img{max-width:100%;border-radius:10px}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
 
     .wrap{
       max-width:var(--max-width);
@@ -42,157 +42,124 @@
       padding:0 var(--pad);
     }
 
-    /* =====================================
-       NAVIGATION (IDENTICAL TO HOME)
-    ======================================*/
+    /* ================= NAV ================= */
     header.site-header{
-      position:sticky;
-      top:0;
-      z-index:99;
-      background:rgba(255,255,255,0.97);
-      backdrop-filter:blur(6px) saturate(120%);
-      border-bottom:1px solid rgba(12,58,89,0.05);
+      position:sticky;top:0;z-index:80;
+      background:rgba(255,255,255,0.94);
+      backdrop-filter:saturate(140%) blur(10px);
+      border-bottom:1px solid rgba(12,58,89,0.08);
     }
-
     .nav-row{
-      height:72px;
+      height:76px;
       display:flex;
+      align-items:center;
       justify-content:space-between;
-      align-items:center;
+      gap:18px;
     }
-
     .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
+      display:flex;align-items:center;gap:12px;
     }
     .brand img{height:44px}
-    .brand .abbr{
-      font-weight:800;
+    .brand-title{
       font-family:"Merriweather",serif;
-      color:var(--gold);
+      font-weight:800;
+      color:var(--navy);
       letter-spacing:0.6px;
     }
 
-    nav.main-nav{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-
+    nav.main-nav{display:flex;align-items:center;gap:12px}
     .nav-links{
-      display:flex;
-      gap:6px;
-      align-items:center;
+      display:flex;gap:4px;align-items:center;
+      padding:6px;
+      border-radius:999px;
+      background:rgba(12,58,89,0.03);
+      border:1px solid rgba(12,58,89,0.06);
     }
     .nav-links a{
       padding:10px 14px;
-      border-radius:var(--radius-pill);
-      font-weight:600;
+      border-radius:999px;
+      font-weight:700;
+      font-size:14px;
+      color:rgba(12,58,89,0.9);
+      transition:var(--transition);
+    }
+    .nav-links a:hover{
+      background:rgba(201,155,42,0.14);
       color:var(--navy);
-      position:relative;
-      transition:var(--transition);
-      text-decoration:none;
     }
-    .nav-links a::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:inherit;
-      border:2px solid transparent;
-      transition:var(--transition);
+    .nav-links a[aria-current="page"]{
+      background:#fff;
+      color:var(--navy);
+      box-shadow:0 10px 26px rgba(12,58,89,0.12);
     }
-    .nav-links a:hover::after{border-color:var(--gold)}
 
     .nav-cta{
-      background:var(--gold-soft);
       padding:10px 16px;
-      border-radius:12px;
-      font-weight:700;
+      border-radius:999px;
+      font-weight:800;
+      font-size:14px;
+      background:var(--gold-soft);
       color:var(--navy);
-      box-shadow:0 6px 20px rgba(12,58,89,0.08);
-      text-decoration:none;
+      box-shadow:0 12px 30px rgba(12,58,89,0.12);
     }
 
     .mobile-toggle{display:none}
 
-    /* =====================================
-       TITLES
-    ======================================*/
-    h1,h2,h3,h4{
-      font-family:"Merriweather",serif;
-      color:var(--navy);
-    }
-    h1{font-size:36px;margin:0 0 12px}
-    h2{font-size:28px;margin:0 0 14px}
-    h3{font-size:22px;margin:0 0 12px}
-
-    /* =====================================
-       PAGE HERO (MATCH HOMEPAGE THEME)
-    ======================================*/
-    .page-hero{
-      background:linear-gradient(180deg,var(--navy),#0f2f47);
+    /* ================= HERO ================= */
+    .hero{
+      background:linear-gradient(180deg,var(--navy),rgba(12,58,89,0.88));
       color:#fff;
-      padding:70px 0;
+      padding:64px 0 44px;
     }
-    .page-hero p{
+    .hero h1{
+      font-family:"Merriweather",serif;
+      font-size:36px;
+      margin:0 0 12px;
+    }
+    .hero p{
       max-width:680px;
       font-size:17px;
       opacity:0.95;
-      margin:10px 0 0;
     }
 
-    /* =====================================
-       SECTIONS
-    ======================================*/
-    section{
-      padding:40px 0;
-      border-bottom:1px solid rgba(12,58,89,0.05);
-    }
+    /* ================= CONTENT ================= */
+    main{padding:44px 0}
+    section{padding:28px 0}
 
-    /* =====================================
-       PROJECT BLOCK (MATCHES CARD STYLE)
-    ======================================*/
-    .project-block{
-      background:#fff;
-      padding:22px;
-      border-radius:12px;
-      border:1px solid rgba(12,58,89,0.05);
-      box-shadow:0 8px 26px rgba(12,58,89,0.06);
-      margin-bottom:22px;
-    }
-    .project-block h3{
-      margin-top:0;
+    .section-title{
+      font-family:"Merriweather",serif;
+      font-size:28px;
+      margin:0 0 18px;
       color:var(--navy);
     }
 
-    /* =====================================
-       GRID FOR STAFF & ADVISORY TEAMS
-    ======================================*/
-    .staff-grid,
-    .advisory-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-      gap:22px;
-    }
-
-    .card-person{
+    .card{
       background:#fff;
+      border-radius:var(--radius);
       padding:18px;
-      border-radius:12px;
-      border:1px solid rgba(12,58,89,0.05);
-      box-shadow:0 8px 22px rgba(12,58,89,0.06);
+      border:var(--border);
+      box-shadow:var(--shadow-sm);
+      transition:transform var(--transition), box-shadow var(--transition);
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow-md);
     }
 
-    .card-person h4{
-      margin:6px 0 10px;
-      font-size:19px;
-      color:var(--navy);
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
     }
 
-    /* =====================================
-       FOOTER (IDENTICAL TO HOME)
-    ======================================*/
+    .meta{font-size:14px;color:rgba(10,34,48,0.7)}
+
+    /* ================= FOOTER ================= */
     footer.site-footer{
       background:var(--navy);
       color:#fff;
@@ -202,275 +169,148 @@
     .footer-grid{
       display:flex;
       justify-content:space-between;
-      align-items:flex-start;
-      flex-wrap:wrap;
       gap:20px;
+      flex-wrap:wrap;
     }
     .footer-brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
+      display:flex;gap:12px;align-items:center;
     }
     .footer-brand img{height:40px}
+    .footer-links a{margin-right:16px;color:rgba(255,255,255,0.9)}
 
-    .footer-links a{
-      color:rgba(255,255,255,0.92);
-      margin-right:16px;
-      text-decoration:none;
+    /* ================= RESPONSIVE ================= */
+    @media(max-width:900px){
+      .grid-3{grid-template-columns:repeat(2,1fr)}
     }
-
     @media(max-width:760px){
       .nav-links{display:none}
-      .mobile-toggle{
-        display:block;
-        font-size:26px;
-        background:none;
-        border:none;
-      }
+      .mobile-toggle{display:block;background:none;border:none;font-size:24px}
+      .grid-2,.grid-3{grid-template-columns:1fr}
+      .hero h1{font-size:30px}
     }
   </style>
 </head>
 
 <body>
 
-<!-- =====================================
-     NAVIGATION
-====================================== -->
 <header class="site-header">
   <div class="wrap nav-row">
-    <div class="brand">
-      <img src="assets/images/logo-ghbr 1.png" alt="GHBR logo"/>
-      <div class="abbr">GHBR</div>
-    </div>
+    <a class="brand" href="index.html">
+      <img src="assets/images/logo-ghbr 1.png" alt="GHBR logo">
+      <div class="brand-title">GHBR</div>
+    </a>
 
     <nav class="main-nav">
-      <button class="mobile-toggle" id="mobileToggle">☰</button>
-
-      <div class="nav-links" id="desktopMenu">
+      <button class="mobile-toggle">☰</button>
+      <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="research.html">Research</a>
+        <a href="research.html" aria-current="page">Research</a>
         <a href="services.html">Services</a>
         <a href="blog.html">Blog</a>
       </div>
-
       <a class="nav-cta" href="index.html#contact">Contact</a>
     </nav>
   </div>
 </header>
 
-<!-- =====================================
-     PAGE HERO
-====================================== -->
-<section class="page-hero">
+<section class="hero">
   <div class="wrap">
     <h1>Research & Publications</h1>
     <p>
-      Our work strengthens institutions, advances bioethics, promotes responsible scientific inquiry, 
-      and supports public health improvements across Ghana and beyond.
+      We generate rigorous, ethically grounded evidence that strengthens institutions,
+      informs policy, and advances responsible health research in Ghana and beyond.
     </p>
   </div>
 </section>
 
-<!-- =====================================
-     WHO WE ARE
-====================================== -->
-<section>
+<main>
   <div class="wrap">
-    <h2>Who We Are</h2>
-    <p>
-      The Centre for Global Health & Bioethics Research (GHBR) provides independent, high-quality research 
-      and consultancy services. We support both private and public institutions in making evidence-based decisions 
-      that improve health outcomes, strengthen systems, and advance ethical research practices.
-    </p>
+
+    <section>
+      <h2 class="section-title">Featured Research Projects</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Bioethicists in Ghana’s Workforce</h3>
+          <p class="meta">
+            National qualitative study under the NYU–University of Ghana Research Integrity Training Program (RITP),
+            examining employment pathways and stakeholder perspectives.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Socio-Cultural & Economic Impact of Chale Wote</h3>
+          <p class="meta">
+            Community-based assessment of cultural, social and economic outcomes of relocating the
+            Chale Wote Street Art Festival from James Town.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Contra Health — Mobile SRH Intervention</h3>
+          <p class="meta">
+            Quasi-experimental evaluation of a mobile reproductive health application assessing
+            contraceptive uptake and discontinuation trends among women in Ghana.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Publications & Outputs</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Advance Directives in Ghana</h3>
+          <p class="meta">
+            Content analysis of national health policy documents and implications for dementia
+            and end-of-life care.
+          </p>
+          <p>
+            <a href="https://medicalhumanities.bmj.com/" target="_blank" style="color:var(--gold);font-weight:800">
+              Read publication →
+            </a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>World Congress on Research Integrity — 2026</h3>
+          <p class="meta">
+            GHBR researchers will participate in the 2026 WCRI conference in Vancouver,
+            engaging global leaders in research integrity and ethical governance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Research Leadership</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h4>Israel Kwame Kesse Adjei</h4>
+          <p class="meta">CEO & Founder — maternal health, bioethics, public health research</p>
+        </div>
+        <div class="card">
+          <h4>Irene Apewe Adjei</h4>
+          <p class="meta">Deputy CEO — community nutrition & public health research</p>
+        </div>
+        <div class="card">
+          <h4>Isaac Boadu (PhD)</h4>
+          <p class="meta">Head of Research — methodology & project coordination</p>
+        </div>
+      </div>
+    </section>
+
   </div>
-</section>
+</main>
 
-<!-- =====================================
-     FEATURED PROJECTS
-====================================== -->
-<section>
-  <div class="wrap">
-    <h2>Featured Projects & Publications</h2>
-
-    <div class="project-block">
-      <h3>Bioethicists in Ghana’s Workforce</h3>
-      <p>
-        A qualitative national study exploring employment pathways for bioethicists in Ghana under the 
-        NYU–University of Ghana Research Integrity Training Program (RITP).  
-      </p>
-    </div>
-
-    <div class="project-block">
-      <h3>Socio-Cultural & Economic Impact of Chale Wote Festival</h3>
-      <p>
-        An assessment of community perceptions, cultural outcomes, and economic implications of relocating the 
-        Chale Wote Street Art Festival away from James Town.
-      </p>
-    </div>
-
-    <div class="project-block">
-      <h3>Contra Health — Mobile App Study on Contraceptive Use</h3>
-      <p>
-        A quasi-experimental evaluation of a reproductive health mobile application examining contraceptive uptake 
-        and discontinuation trends among women in Ghana.
-      </p>
-      <p><strong>Study Type:</strong> Digital Health / mHealth Intervention</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- =====================================
-     LATEST NEWS
-====================================== -->
-<section>
-  <div class="wrap">
-    <h2>Latest News & Insight</h2>
-
-    <div class="project-block">
-      <h3>Advance Directives in Ghana — Policy Analysis</h3>
-      <p>
-        A detailed review of national health policy documents to determine the presence and role of advance directives, 
-        with implications for dementia and end-of-life care.
-      </p>
-      <p>Read more at: 
-        <a style="color:var(--gold)" href="https://mh.bmj.com" target="_blank">Medical Humanities Journal</a>
-      </p>
-    </div>
-
-    <div class="project-block">
-      <h3>World Congress on Research Integrity — Vancouver 2026</h3>
-      <p>
-        GHBR researchers will participate in the 2026 WCRI event, engaging with global leaders in research integrity, 
-        policy reform, and ethical governance.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- =====================================
-     STAFF PROFILES
-====================================== -->
-<section>
-  <div class="wrap">
-    <h2>Staff Profiles</h2>
-
-    <div class="staff-grid">
-
-      <div class="card-person">
-        <h4>Israel Kwame Kesse Adjei — CEO & Founder</h4>
-        <p>
-          Over 15 years of research experience spanning maternal health, vaccine development, bioethics, 
-          reproductive health, and NCD prevention.
-        </p>
-      </div>
-
-      <div class="card-person">
-        <h4>Irene Apewe Adjei — Deputy CEO</h4>
-        <p>
-          Deputy Chief Nutritionist, Ghana Health Service, and PhD candidate in Public Health,  
-          with deep experience in community health research.
-        </p>
-      </div>
-
-      <div class="card-person">
-        <h4>Isaac Boadu (PhD) — Head of Research</h4>
-        <p>
-          Leads cross-disciplinary health and social research initiatives with expertise in advanced methodology 
-          and project coordination.
-        </p>
-      </div>
-
-      <div class="card-person">
-        <h4>Samuella Afua Adjei — Head of Administration</h4>
-        <p>
-          Administrative specialist with over 10 years of service in the Ghana Health Service.
-        </p>
-      </div>
-
-      <div class="card-person">
-        <h4>Emmanuel Kofi Adjei — Head, Religion & Art Research</h4>
-        <p>
-          Leads research on intersections between culture, traditional belief systems, art, and population health.
-        </p>
-      </div>
-
-      <div class="card-person">
-        <h4>Dr. Sarah Azindow — Head of Clinical Research</h4>
-        <p>
-          Medical doctor with expertise in public health and clinical research supervision.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- =====================================
-     ADVISORY COMMITTEE
-====================================== -->
-<section>
-  <div class="wrap">
-    <h2>Advisory Committee</h2>
-
-    <div class="advisory-grid">
-
-      <div class="card-person">
-        <h4>Chair — Dr. Adolf Awuah</h4>
-        <p>
-          Public health scientist with specialty in bioethics, epidemiology, molecular biology, and 
-          research integrity governance.
-        </p>
-      </div>
-
-      <div class="card-person">
-        <h4>Deputy Chair — Prof. Samuel Owusu-Asiedu</h4>
-        <p>
-          Senior Research Fellow and UCC IRB administrator, specialising in innovation and ethical research systems.
-        </p>
-      </div>
-
-      <div class="card-person">
-        <h4>Secretary — Dr. Pamela Emefa Selormey</h4>
-        <p>
-          Research ethicist and technologist (CSIR) with expertise in infectious diseases, parasitology, and public health ethics.
-        </p>
-      </div>
-
-      <div class="card-person">
-        <h4>Board Member — Dr. Irene Tsey</h4>
-        <p>
-          Public health specialist, educator, and advocate for community-centered research ethics.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- =====================================
-     CONTACT INFORMATION
-====================================== -->
-<section>
-  <div class="wrap">
-    <h2>Official Email</h2>
-    <p><strong>Email:</strong> info4ghbr@gmail.com</p>
-  </div>
-</section>
-
-<!-- =====================================
-     FOOTER
-====================================== -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="assets/images/logo-ghbr 1.png" alt="">
         <div>
-          <div style="color:var(--gold);font-weight:700">GHBR</div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.8)">Improving Health, Advancing Ethics</div>
+          <div style="font-weight:800;color:var(--gold)">GHBR</div>
+          <div style="font-size:13px;opacity:.85">Improving Health, Advancing Ethics</div>
         </div>
       </div>
 
@@ -479,7 +319,6 @@
         <a href="research.html">Research</a>
         <a href="services.html">Services</a>
         <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact</a>
       </div>
     </div>
 
@@ -492,14 +331,6 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
-
-  const toggle = document.getElementById("mobileToggle");
-  const menu = document.getElementById("desktopMenu");
-
-  toggle.addEventListener("click", () => {
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-    menu.style.flexDirection = "column";
-  });
 </script>
 
 </body>
